@@ -4,6 +4,21 @@ import (
 	"math"
 )
 
+func CosineSimilarity(word string, synonym string, lexicon map[string]map[string]int) (float64) {
+	_, ok := lexicon[synonym]
+	if (!ok) {
+		return 0
+	}
+
+	var wordMap map[string]int = lexicon[word]
+	var synonymMap map[string]int = lexicon[synonym]
+
+	var operand float64 = calculate_operand(wordMap, synonymMap)
+	var divisor float64 = calculate_divisor(wordMap, synonymMap)
+
+	return (operand / divisor)
+}
+
 func squared_sum(givenMap map[string]int) (int) {
 	var sum float64 = 0.0
 	for _, value := range givenMap {
@@ -25,20 +40,4 @@ func calculate_operand(wordMap map[string]int, synonymMap map[string]int) (float
 
 func calculate_divisor(wordMap map[string]int, synonymMap map[string]int) (float64) {
 	return math.Sqrt(float64(squared_sum(wordMap) * squared_sum(synonymMap)))
-}
-
-
-func CosineSimilarity(word string, synonym string, lexicon map[string]map[string]int) (float64) {
-	_, ok := lexicon[synonym]
-	if (!ok) {
-		return 0
-	}
-
-	var wordMap map[string]int = lexicon[word]
-	var synonymMap map[string]int = lexicon[synonym]
-
-	var operand float64 = calculate_operand(wordMap, synonymMap)
-	var divisor float64 = calculate_divisor(wordMap, synonymMap)
-
-	return (operand / divisor)
 }

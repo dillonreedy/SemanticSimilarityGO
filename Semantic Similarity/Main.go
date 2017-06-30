@@ -14,7 +14,7 @@ func main() {
 	var lexicon string = gi.GetBookText()
 	var sanitizedLexicon string = si.SanitizeLexicon(lexicon)
 	var booksSentences []string = dc.CreateSentences(sanitizedLexicon)
-	var booksKeys []string = si.GetUniqueKeys(sanitizedLexicon)
+	var booksKeys []string = dc.CreateUniqueKeys(sanitizedLexicon)
 	var lexiconMap map[string]map[string]int = dc.CreateMap(booksSentences, booksKeys)
 	reader := bufio.NewReader(os.Stdin)
 

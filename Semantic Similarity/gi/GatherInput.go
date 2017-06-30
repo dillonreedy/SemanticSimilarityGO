@@ -7,20 +7,6 @@ import (
 	"strconv"
 )
 
-func readLines(path string) (string, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return "", err
-	}
-	defer file.Close()
-
-	var text string = ""
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		text += scanner.Text()
-	}
-	return text, scanner.Err()
-}
 
 func GetBookText() (string) {
 	var booksText string
@@ -36,4 +22,19 @@ func GetBookText() (string) {
 	}
 
 	return booksText
+}
+
+func readLines(path string) (string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return "", err
+	}
+	defer file.Close()
+
+	var text string = ""
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		text += scanner.Text()
+	}
+	return text, scanner.Err()
 }
