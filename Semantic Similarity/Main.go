@@ -35,7 +35,7 @@ func main() {
 			var synonym1 string = ""
 			var synonym2 string = ""
 			var synonym3 string = ""
-			var	synonym4 string = ""
+			var synonym4 string = ""
 
 			synonym1, _ = reader.ReadString('\n')
 			synonym1 = si.SanitizeUserInput(synonym1)
